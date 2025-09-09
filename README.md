@@ -1,4 +1,4 @@
-# Minifeed Backend
+# Social Feed System Backend
 ## IMPORTANT
 
 This repository developed from "**pure-authen**" branch
