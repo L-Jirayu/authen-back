@@ -11,6 +11,9 @@ export class Postandup extends Document {
 
   @Prop({ required: true })
   userId: string;
+
+  @Prop()   
+  name?: string;
 }
 
 export const PostandupSchema = SchemaFactory.createForClass(Postandup);
