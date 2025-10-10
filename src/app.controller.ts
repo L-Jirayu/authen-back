@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { connection } from 'mongoose';
 
 @Controller()
 export class AppController {
@@ -10,8 +11,11 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('health')
-  ping() {
-    return { ok: true };
+  // เปลี่ยนจาก /health → /ready เพื่อเช็กระบบจริง
+  @Get('ready')
+  async ready() {
+    // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+    const state = connection.readyState;
+    return { dbConnected: state === 1, state };
   }
 }
